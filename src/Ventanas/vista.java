@@ -684,7 +684,7 @@ public class vista extends javax.swing.JFrame implements Printable {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Vista_General)
-                .addGap(57, 57, 57))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -806,6 +806,11 @@ public class vista extends javax.swing.JFrame implements Printable {
     }//GEN-LAST:event_btnRefrescar_ActionPerformed
 
     private void btnImprimir_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir_ActionPerformed
+        conexion mycn = new conexion();
+        int fila = Tabla_Factura.getRowCount();
+        String filaT = "";
+        double cant = 0;
+
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setPrintable(this);
 
@@ -814,7 +819,32 @@ public class vista extends javax.swing.JFrame implements Printable {
                 job.print();
             } catch (Exception e) {
             }
-            
+            try {
+                Connection cn = mycn.conectar();
+                if (cn != null) {
+                    for (int i = 0; i < fila; i++) {
+                        filaT = tablaFactura.getValueAt(i, 0).toString();
+                        double cellCant = Double.parseDouble(tablaFactura.getValueAt(i, 1).toString());
+                        PreparedStatement ps = cn.prepareStatement("select Cantidad from datos_inv where ID=?");
+                        ps.setString(1, filaT);
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            double cantBD = Double.parseDouble(rs.getString("Cantidad").toString());
+                            String total = String.valueOf(cantBD - cellCant);
+
+                            PreparedStatement pst = cn.prepareStatement(""
+                                    + "update datos_inv set Cantidad=? "
+                                    + "where ID=?");
+                            pst.setString(1, total);
+                            pst.setString(2, filaT);
+                            pst.executeUpdate();
+                        } else {
+                            System.out.println("Problemas.");
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
         } else {
             JOptionPane.showMessageDialog(this, "La impresión se caceló!");
         }
