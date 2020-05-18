@@ -780,7 +780,6 @@ public class vista extends javax.swing.JFrame implements Printable {
         int fila = Tabla.getRowCount();
         for (int i = fila - 1; i > -1; i--) {
             dtm.removeRow(i);
-            System.out.println(i);
         }
 
         try {
@@ -850,6 +849,10 @@ public class vista extends javax.swing.JFrame implements Printable {
             }
         } else {
             JOptionPane.showMessageDialog(this, "La impresión se caceló!");
+        }
+        
+        for (int i = fila - 1; i > -1; i--) {
+            tablaFactura.removeRow(i);
         }
     }//GEN-LAST:event_btnImprimir_ActionPerformed
 
