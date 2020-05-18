@@ -33,6 +33,7 @@ public class vista extends javax.swing.JFrame implements Printable {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Ferretía \"El Ferrocarril\"");
+        Funciones fcn = new Funciones();
 
         String[] titulo = new String[]{"ID", "Nombre", "Descripción", "Imagen", "Uso",
             "Estante", "Precio", "Cantidad", "Proveedor"};
@@ -66,6 +67,8 @@ public class vista extends javax.swing.JFrame implements Printable {
             }
         } catch (Exception e) {
         }
+        
+        jlbFecha.setText(fcn.fechaActual());
     }
 
     /**
@@ -86,7 +89,7 @@ public class vista extends javax.swing.JFrame implements Printable {
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jlbFecha = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -180,8 +183,8 @@ public class vista extends javax.swing.JFrame implements Printable {
         jLabel13.setText("Fecha");
         jLabel13.setPreferredSize(new java.awt.Dimension(30, 50));
 
-        jLabel14.setText("Noviembre 15 de 2020");
-        jLabel14.setPreferredSize(new java.awt.Dimension(30, 50));
+        jlbFecha.setText("Noviembre 15 de 2020");
+        jlbFecha.setPreferredSize(new java.awt.Dimension(30, 50));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setText("Faturable a");
@@ -200,7 +203,7 @@ public class vista extends javax.swing.JFrame implements Printable {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(jlbFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(89, 89, 89)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +228,7 @@ public class vista extends javax.swing.JFrame implements Printable {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -890,6 +893,7 @@ public class vista extends javax.swing.JFrame implements Printable {
             txtStock_Factura.setText("");
             txtCodigo_Factura.setText("");
             txtNo_vender.setText("");
+
         }
     }//GEN-LAST:event_btnAgregar_Producto_ActionPerformed
 
@@ -1004,7 +1008,6 @@ public class vista extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1029,6 +1032,7 @@ public class vista extends javax.swing.JFrame implements Printable {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jlbFecha;
     private javax.swing.JLabel jlbFoto;
     private javax.swing.JPanel jpFactura;
     private javax.swing.JLabel lblCant_letras;

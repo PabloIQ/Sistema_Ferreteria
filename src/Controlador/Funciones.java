@@ -1,5 +1,8 @@
 package Controlador;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class Funciones {
 
     public String num_a_str(double cant) {
@@ -312,5 +315,14 @@ public class Funciones {
         }
 
         return resultado;
+    }
+    
+    public String fechaActual(){
+        DateFormat df = DateFormat.getDateInstance();
+        Date fecha = new Date();
+        
+        String fech = df.format(fecha);
+        
+        return fech;
     }
 }
